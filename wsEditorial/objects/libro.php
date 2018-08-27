@@ -38,7 +38,7 @@ class Libro{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    nombre=:nombre, isbn=:isbn, descripcion=:descripcion, autor=:autor, fecha=:fecha, imagen=:imagen";
+                    nombre=:nombre, autor=:autor, descripcion=:descripcion, fecha=:fecha, isbn=:isbn, imagen=:imagen";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -49,22 +49,22 @@ class Libro{
         $this->descripcion=htmlspecialchars(strip_tags($this->descripcion));
         $this->autor=htmlspecialchars(strip_tags($this->autor));
         $this->imagen=htmlspecialchars(strip_tags($this->imagen));
-        $this->fecha=htmlspecialchars(strip_tags($this->fecha));
-    
+        $this->fecha=$this->fecha;
         // bind values
-        $stmt->bindParam(":nombre", $this->name);
+        $stmt->bindParam(":nombre", $this->nombre);
         $stmt->bindParam(":isbn", $this->isbn);
         $stmt->bindParam(":descripcion", $this->descripcion);
         $stmt->bindParam(":autor", $this->autor);
-        $stmt->bindParam(":imagen", $this->created);
+        $stmt->bindParam(":imagen", $this->imagen);
         $stmt->bindParam(":fecha", $this->fecha);
     
+        $execute = $stmt->execute();
         // execute query
-        if($stmt->execute()){
+        if($execute){
             return true;
+        }else{
+            return false;
         }
-    
-        return false;
         
     }
 

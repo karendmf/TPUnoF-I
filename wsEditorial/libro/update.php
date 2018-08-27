@@ -41,7 +41,7 @@ if($libro->update()){
 // if unable to update the libro, tell the user
 else{
     echo '{';
-        echo '"message": "Erro al actualizar el libro."';
+        echo '"message": "Error al actualizar el libro."';
     echo '}';
 }
 ?>
