@@ -19,17 +19,19 @@ $libro = new libro($db);
  
 // get id of libro to be edited
 $data = json_decode(file_get_contents("php://input"));
- 
+
 // set ID property of libro to be edited
 $libro->id = $data->id;
  
 // set libro property values
+$fecha= new DateTime($data->fecha);
+
 $libro->nombre = $data->nombre;
 $libro->isbn = $data->isbn;
 $libro->descripcion = $data->descripcion;
 $libro->autor = $data->autor;
 $libro->imagen = $data->imagen;
-$libro->fecha = $data->fecha;
+$libro->fecha = date_format($fecha, 'Y-m-d');
  
 // update the libro
 if($libro->update()){

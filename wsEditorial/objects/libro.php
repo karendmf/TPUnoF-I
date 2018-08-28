@@ -128,7 +128,7 @@ class Libro{
         $stmt = $this->conn->prepare($query);
     
         // sanitize
-        $this->name=htmlspecialchars(strip_tags($this->name));
+        $this->nombre=htmlspecialchars(strip_tags($this->nombre));
         $this->isbn=htmlspecialchars(strip_tags($this->isbn));
         $this->descripcion=htmlspecialchars(strip_tags($this->descripcion));
         $this->autor=htmlspecialchars(strip_tags($this->autor));
