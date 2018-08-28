@@ -23,7 +23,7 @@ if($num>0){
  
     // products array
     $libro_arr=array();
-    $libro_arr["records"]=array();
+    $libro_arr=array();
  
     // retrieve our table contents
     // fetch() is faster than fetchAll()
@@ -43,7 +43,7 @@ if($num>0){
             "imagen" => $imagen
         );
  
-        array_push($libro_arr["records"], $unLibro);
+        array_push($libro_arr, $unLibro);
     }
  
     echo json_encode($libro_arr);
